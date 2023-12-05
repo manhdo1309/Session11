@@ -1,0 +1,98 @@
+#include <stdio.h>
+#include <stdlib.h>
+int main()
+{	
+	int n;
+	printf("Nhap so phan tu cua mang: ");
+	scanf("%d", &n);
+	int numbers[n];
+	char e;
+	printf("Nhap vao gia tri cac phan tu: \n");
+	for(int i = 0; i < n; i++)
+	{
+		printf("numbers[%d] = ", i);
+		scanf("%d", &numbers[i]);
+	}
+	do{
+		printf("MENU\n");
+		printf("1. In gia tri cac phan tu cua mang\n");
+		printf("2. Sap xep mang giam dan insertion sort\n");
+		printf("3. Sap xep mang tang dan selection sort\n");
+		printf("4. Sap xep mang giam dan bubble sort\n");
+		printf("5. Thoat\n");
+		printf("Lua chon cua ban: ");
+		int choice;
+		scanf("%d", &choice);
+		switch(choice)
+		{
+			case 1:
+				for(int i = 0; i < n; i++)
+				{
+					printf("numbers[%d] = %d\n", i, numbers[i]);
+				}
+				break;
+			case 2:
+				for(int i = 0; i < n; i++)
+				{
+					int current = numbers[i];
+					int j = i - 1;
+					while(j >= 0 && current > numbers[j])
+					{
+						numbers[j + 1] = numbers[j];
+						j--;
+					}
+					numbers[j + 1] = current;
+				}
+				printf("************\n");
+				printf("Mang sau khi sap xep insertion sort: \n");
+				for(int i = 0; i < n; i++)
+				{
+					printf("numbers[%d] = %d\n", i, numbers[i]);
+				}
+				break;
+			case 3:
+				for(int i = 0; i < n; i++)
+				{
+					for(int j = i+ 1; j < n; j++)
+					{
+						if(numbers[i] > numbers[j])
+						{
+							int temp = numbers[i];
+							numbers[i] = numbers[j];
+							numbers[j] = temp;
+						}
+					}
+				}
+				printf("************\n");
+				printf("Mang sau khi sap xep selection sort: \n");
+				for(int i = 0; i < n; i++)
+				{
+					printf("numbers[%d] = %d\n", i, numbers[i]);
+				}
+				break;
+			case 4: 
+				for(int i = 0; i < n - 1; i++)
+				{
+					for(int j = 0; j < n - i - 1; j++)
+					{
+						if(numbers[j+1] > numbers[j])
+						{
+							int temp = numbers[j];
+							numbers[j] = numbers[j + 1];
+							numbers[j + 1] = temp;
+						}
+					}
+				}
+				printf("************\n");
+				printf("Mang sau khi sap xep bubble sort: \n");
+				for(int i = 0; i < n; i++)
+				{
+					printf("numbers[%d] = %d\n", i, numbers[i]);
+				}
+				break;
+			case 5:
+				exit(e);
+		}
+	}while("Lua chon cua ban: ");
+
+}
