@@ -1,0 +1,92 @@
+#include <stdio.h>
+#include <stdlib.h>
+int main()
+{
+	int n;
+	printf("Nhap vao so phan tu: ");
+	scanf("%d", &n);
+	int numbers[n];
+	for(int i = 0; i < n; i++)
+	{
+		printf("numbers[%d] = ", i);
+		scanf("%d", &numbers[i]);
+	}
+	do
+	{
+		printf("MENU\n");
+		printf("1. In gia tri cac phan tu cua mang\n");
+		printf("2. Tim kiem tuyen tinh\n");
+		printf("3. Tim kiem nhi phan\n");
+		printf("4. Thoat\n");
+		printf("Lua chon cua ban: ");
+		int choice;
+		char e;
+		scanf("%d", &choice);
+		switch(choice)
+		{
+			case 1:
+				for(int i = 0; i < n; i++)
+				{
+					printf("%d\t\n", numbers[i]);
+				}
+				break;
+			case 2:
+				int value1;
+				printf("Nhap vao gia tri can tim: ");
+				scanf("%d", &value1);
+				int i;
+				for(i = 0; i < n; i++)
+				{
+					if(numbers[i] == value1)
+					{
+						break;
+					}
+				}
+				if(numbers[i] == value1)
+				{
+					printf("Cac phan tu co cung gia tri: %d\n", i);
+				}
+				else
+				{
+					printf("Khong tim thay phan tu co cung gia tri\n");
+				}
+				break;
+			case 3:
+				int value2;
+				printf("Nhap vao gia tri can tim: ");
+				scanf("%d", &value2);
+				int start = 0;
+				int end = sizeof (numbers)/sizeof(int);
+				int mid;
+				while(start<=end) 
+				{
+				    mid = (start+end)/2;
+				    if (numbers [mid] == value2)
+					{
+				      break;
+				    } 
+					else if (numbers [mid]<value2) 
+					{
+				      start = mid+1;
+				    } 
+					else 
+					{
+				      end = mid-1;
+				    }
+				}
+				if(numbers[mid] == value2)
+				{
+					printf("Phan tu co cung gia tri la %d\n", mid);
+				}
+				else
+				{
+					printf("Khong tim thay phan tu cung gia tri\n");
+				}
+				break;
+
+		}
+	}while("Lua chon cua ban: \n");
+	
+	
+	return 0;
+}
